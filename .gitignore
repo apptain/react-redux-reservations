@@ -1,0 +1,11 @@
+node_modules/
+.meteor/local/
+.idea/
+.vs/
+bail.api/packages/
+bin/
+object/
+obj/
+npm-debug.log
+.DS_Store
+._.DS_Store
