@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader'
 import { browserHistory } from 'react-router'
 import * as reservationActions from '../actions/reservationActions'
+import reservationGridColumns from '../gridColumns/reservationGridColumns'
 import Grid from '../components/grid'
 
 import ReservationsSchema from '../schemas/reservationSchema';
@@ -28,7 +29,7 @@ const ReservationsContainer = React.createClass({
       <div className="grid">
         <Loader loaded={this.props.loaded}>
           { this.props.reservations ?
-            <Grid {...this.props} />
+            <Grid rowData={this.props.reservations} columnDefs={reservationGridColumns} />
           :
             <div>No Data</div>
           }
