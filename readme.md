@@ -7,7 +7,9 @@ meteor
 **Use**
 cd meteor
 npm i
-npm start
+
+test - npm run test
+app (needs work still) - npm start
 
 **To do**
 Start and finish red/greening reducer tests

@@ -1,7 +1,7 @@
 import actionTypes from '../actionTypes/reservationActionTypes'
 
 const initialState = {
-	reservation: null,
+	reservation: {},
   reservationSelectPending: false,
 	reservations: [],
   reservationsQueryPending: false,
