@@ -1,7 +1,7 @@
 import actionTypes from '../actionTypes/reservationActionTypes'
 
 const initialState = {
-	reservationSelect: null,
+	reservation: null,
   reservationSelectPending: false,
 	reservations: [],
   reservationsQueryPending: false,
@@ -10,6 +10,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    //This actionType is temporary
     case actionTypes.queried:
       return Object.assign({}, state, {
         reservations: action
