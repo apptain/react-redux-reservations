@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
     case actionTypes.change.success:
       return Object.assign({}, state, {
         reservationsChangePending: false,
-        reservations: action.payload
+        reservation: action.payload
       })
     case actionTypes.change.failure:
       return Object.assign({}, state, {

@@ -43,9 +43,9 @@ describe('reducers.reservations', function() {
       })
       //failure
       describe(actionTypes.select.failure, function () {
-        let action = actionTypes.select.request
+        let action = { type: actionTypes.select.failure }
         let newState = reservationReducers(undefined, action)
-        it("sets select request pending state to true", function () {
+        it("sets select request pending state to false", function () {
           expect(newState.reservationSelectPending).to.deep.equal(false)
         })
       })
@@ -53,7 +53,7 @@ describe('reducers.reservations', function() {
     describe('query reducers',  function () {
       //request
       describe(actionTypes.query.request, function () {
-        let action = actionTypes.query.request
+        let action = { type: actionTypes.query.request }
         let newState = reservationReducers(undefined, action)
         it("sets query request pending state to true", function () {
           expect(newState.reservationsQueryPending).to.deep.equal(true)
@@ -61,14 +61,14 @@ describe('reducers.reservations', function() {
       })
       //success
       describe(actionTypes.query.success, function () {
-        let reservationStubs = reservationStubs.stubs(5)
+        let reservationStubArray = reservationStubs.stubs(5)
         let action = {
           type: actionTypes.query.success,
-          payload: reservationStubs
+          payload: reservationStubArray
         }
         let newState = reservationReducers(undefined, action)
         it('sets reservation', function () {
-          expect(newState.reservations).to.deep.equal(reservationStubs)
+          expect(newState.reservations).to.deep.equal(reservationStubArray)
         })
         it("sets query request pending state to false", function () {
           expect(newState.reservationsQueryPending).to.deep.equal(false)
@@ -76,7 +76,7 @@ describe('reducers.reservations', function() {
       })
       //failure
       describe(actionTypes.query.failure, function () {
-        let action = actionTypes.change.failure
+        let action = { type: actionTypes.change.failure }
         let newState = reservationReducers(undefined, action)
         it("sets query request pending state to true", function () {
           expect(newState.reservationsQueryPending).to.deep.equal(false)
@@ -86,7 +86,7 @@ describe('reducers.reservations', function() {
     describe('change reducers',  function () {
       //request
       describe(actionTypes.change.request, function () {
-        let action = actionTypes.change.request
+        let action = { type: actionTypes.change.request }
         let newState = reservationReducers(undefined, action)
         it("sets change request pending state to true", function () {
           expect(newState.reservationsChangePending).to.deep.equal(true)
@@ -104,15 +104,15 @@ describe('reducers.reservations', function() {
           expect(newState.reservation).to.deep.equal(reservationStub)
         })
         it("sets change request pending state to false", function () {
-          expect(newState.reservationsSelectPending).to.deep.equal(false)
+          expect(newState.reservationsChangePending).to.deep.equal(false)
         })
       })
       //failure
       describe(actionTypes.change.failure, function () {
-        let action = actionTypes.change.failure
+        let action = { type: actionTypes.change.failure }
         let newState = reservationReducers(undefined, action)
         it("sets change request pending state to true", function () {
-          expect(newState.reservationsSelectPending).to.deep.equal(false)
+          expect(newState.reservationsChangePending).to.deep.equal(false)
         })
       })
     })
