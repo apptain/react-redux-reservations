@@ -7,12 +7,12 @@ import reservationGridColumns from '../gridColumns/reservationGridColumns'
 import Grid from '../components/grid'
 
 import ReservationsSchema from '../schemas/reservationSchema';
-import { Reservations } from '../collections'
+import Reservations from '../collections/reservationsCollection'
 
 const ReservationsContainer = React.createClass({
   componentDidMount() {
     //TODO move into actions/reducers
-    const reservationsSub = Meteor.subscribe('reservationsQueried');
+    const reservationsSub = Meteor.subscribe('reservations');
     //TODO add filter to reservationssub. Add permissions to filter
     //const userPermissionsSub = Meteor.subscribe('users.permissions');
     setTimeout(this.handleSubs(reservationsSub), 0);
@@ -20,7 +20,7 @@ const ReservationsContainer = React.createClass({
   handleSubs(reservationsSub) {
     Meteor.autorun(() => {
       if(reservationsSub.ready()){
-        this.props.reservationsQueried(Reservations.find());
+        this.props.reservations(Reservations.find());
       }
     });
   },

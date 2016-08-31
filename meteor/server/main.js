@@ -1,3 +1,7 @@
+import publications from './publications'
+import methods from './methods'
 import init from './init'
 
-init();
+publications()
+methods()
+init()

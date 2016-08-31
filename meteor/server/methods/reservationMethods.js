@@ -2,21 +2,21 @@ import {Content, Comments} from '/imports/collections';
 import actionTypes from '../../imports/actionTypes'
 
 export default function () {
-  SimpleRest.setMethodOptions('reservations/upsert', options);
+  // SimpleRest.setMethodOptions('reservations/change', options);
 
   Meteor.methods({
-    'reservationsupsertRequest': function (reservations, upsertRequest, params){
-      var upsertFunction;
+    'reservationsChange': function (reservations, changeRequest, params){
+      var changeFunction;
       //TODO Add Checks
-      switch (upsertRequest) {
+      switch (changeRequest) {
         case actionTypes.reservationActionIniators.fulfill:
-          upsertFunction = function (reservation) {
+          changeFunction = function (reservation) {
             //TODO Check _id
             return reservations.update({'_id': reservation._id},
               {status: "canceled"});
           }
         case actionTypes.reservationActionIniators.cancel:
-          upsertFunction = function (reservation) {
+          changeFunction = function (reservation) {
             //TODO Check _id
             return reservations.update({'_id': reservation._id},
               {status: "canceled"});
@@ -26,26 +26,26 @@ export default function () {
       }
       if (Array.isArray(reservations)) {
         reservations.forEach(function(reservation){
-          reserveration = upsertFunction(reservation);
+          reserveration = changeFunction(reservation);
         })
       } else {
         //We are assuming it's an object. Will add checks to insure
-        reservations = upsertFunction(reservations);
+        reservations = changeFunction(reservations);
       }
       return reservations;
     },
     'reservationsUpsert': function (reservations){
-      var upsertFunction = function (reservation) {
+      var changeFunction = function (reservation) {
           return reservations.update({'_id': reservation._id},
-              {status: "canceled"}, {upsert: "true"});
+              {status: "canceled"}, {change: "true"});
       }
       if (Array.isArray(reservations)) {
         reservations.forEach(function(reservation){
-          reserveration = upsertFunction(reservation);
+          reserveration = changeFunction(reservation);
         })
       } else {
         //We are assuming it's an object. Will add checks to insure
-        reservations = upsertFunction(reservations);
+        reservations = changeFunction(reservations);
       }
       return reservations;
     }

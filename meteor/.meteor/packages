@@ -23,7 +23,6 @@ dispatch:mocha-phantomjs      #test runner
 
 #server
 simple:rest
-matb33:collection-hooks
 
 #css
 stylus
