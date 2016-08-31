@@ -22,8 +22,7 @@ export default (state = initialState, action) => {
     case actionTypes.select.success:
       return Object.assign({}, state, {
         reservationSelectPending: false,
-        reservations: action.payload,
-        loaded: true
+        reservation: action.payload,
       })
     case actionTypes.select.failure:
       return Object.assign({}, state, {
@@ -36,8 +35,7 @@ export default (state = initialState, action) => {
     case actionTypes.query.success:
       return Object.assign({}, state, {
         reservationsQueryPending: false,
-        reservations: action.payload,
-        loaded: true
+        reservations: action.payload
       })
     case actionTypes.query.failure:
       return Object.assign({}, state, {
@@ -50,8 +48,7 @@ export default (state = initialState, action) => {
     case actionTypes.change.success:
       return Object.assign({}, state, {
         reservationsChangePending: false,
-        reservations: action.payload,
-        loaded: true
+        reservations: action.payload
       })
     case actionTypes.change.failure:
       return Object.assign({}, state, {
