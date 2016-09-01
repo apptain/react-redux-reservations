@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     //This actionType is temporary
     case actionTypes.queried:
       return Object.assign({}, state, {
-        reservations: action
+        reservations: action.reservations
       })
     case actionTypes.select.request:
       return Object.assign({}, state, {

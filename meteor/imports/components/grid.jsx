@@ -10,8 +10,7 @@ import 'ag-grid/dist/styles/theme-fresh.css';
 var Grid = React.createClass({
   propTypes: {
     columnDefs: PropTypes.array.isRequired,
-    rowData: PropTypes.array.isRequired,
-    options: PropTypes.object
+    rowData: PropTypes.array.isRequired
   },
   onGridReady: function(params) {
     this.api = params.api;
@@ -19,8 +18,8 @@ var Grid = React.createClass({
   },
   componentDidMount: function() {
     //Autoset column sizes
-    var allColumnIds = [];
-    this.refs.agGrid.gridOptions.columnDefs.forEach( function(columnDef) {
+    var allColumnIds = []
+    this.refs.agGrid.gridOptions.columnDefs.forEach(function(columnDef) {
       allColumnIds.push(columnDef.field);
     });
     this.refs.agGrid.gridOptions.columnApi.autoSizeColumns(allColumnIds);
@@ -28,13 +27,16 @@ var Grid = React.createClass({
     this.refs.agGrid.gridOptions.api.sizeColumnsToFit()
   },
   render: function() {
+    //TODO Refactor below line out out if/when possible
+    this.gridOptions = { columnDefs: this.props.columnDefs, rowData: this.props.rowData};
     return (
       <div className="container">
         <div className="ag-fresh">
           <AgGridReact
-            width={options.width || 700}
-            rowData={this.params.rowData}
-            columnDefs={this.params.columnDefs}
+            ref="agGrid"
+            width= "700"
+            rowData={this.props.rowData}
+            columnDefs={this.props.columnDefs}
           />
         </div>
       </div>

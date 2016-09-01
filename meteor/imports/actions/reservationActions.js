@@ -5,7 +5,7 @@ import settings from '../settings'
 //Cool that current and past tense of Read are the same
 export function reservationsQueried(reservations){
   return {
-    type: 'RESERVATIONS_READ',
+    type: actionTypes.queried,
     reservations: reservations
   }
 }

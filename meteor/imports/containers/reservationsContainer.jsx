@@ -13,27 +13,25 @@ const ReservationsContainer = React.createClass({
   componentDidMount() {
     //TODO move into actions/reducers
     const reservationsSub = Meteor.subscribe('reservations');
-    //TODO add filter to reservationssub. Add permissions to filter
+    //TODO add filter to reservationsSub. Add permissions to filter
     //const userPermissionsSub = Meteor.subscribe('users.permissions');
     setTimeout(this.handleSubs(reservationsSub), 0);
   },
   handleSubs(reservationsSub) {
     Meteor.autorun(() => {
       if(reservationsSub.ready()){
-        this.props.reservations(Reservations.find());
+        this.props.reservationsReady(Reservations.find());
       }
     });
   },
   render() {
     return (
       <div className="grid">
-        <Loader loaded={this.props.loaded}>
           { this.props.reservations ?
             <Grid rowData={this.props.reservations} columnDefs={reservationGridColumns} />
-          :
+            :
             <div>No Data</div>
           }
-        </Loader>
       </div>
     )
   }
@@ -41,15 +39,14 @@ const ReservationsContainer = React.createClass({
 
 var mapStateToProps = function(state){
   return {
-    reservations: state.reservations.reservations,
-    loaded: state.reservations.loaded
+    reservations: state.reservations.reservations
   }
 };
 
 var mapDispatchToProps = function(dispatch){
   return {
-    reservationsQueried: function(filters){
-      dispatch(contentActions.contentRead(content));
+    reservationsReady: function(reservations){
+      dispatch(reservationActions.reservationsQueried(reservations.fetch()));
     }
   }
 };

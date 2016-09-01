@@ -1,8 +1,8 @@
 // dateTime", "name", "partyNumber", "status"'
 
 export default columnDefs = [
-  {headerName: "Date & Time"},
-  {headerName: "Name"},
-  {headerName: "Number"},
-  {headerName: "Status"},
+  {field: "dateTime", headerName: "Date & Time"},
+  {field: "name", headerName: "Name"},
+  {field: "partyNumber", headerName: "Number"},
+  {field: "status", headerName: "Status"}
 ];
