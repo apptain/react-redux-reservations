@@ -1,6 +1,8 @@
 import actionTypes from '../actionTypes/reservationActionTypes'
 
 const initialState = {
+	reservationsSubscription: null,
+	reservationsFilters: {}, 
 	reservation: {},
   reservationSelectPending: false,
 	reservations: [],
@@ -11,6 +13,20 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     //This actionType is temporary
+   case actionTypes.subscription.request:
+      return Object.assign({}, state, {
+        reservationsSubscriptionPending: true
+      })
+    case actionTypes.subscription.ready:
+      return Object.assign({}, state, {
+        reservationsSubscriptionPending: false,
+        reservations: action.payload
+      })
+    case actionTypes.subscription.failure:
+      return Object.assign({}, state, {
+        reservationsSubscriptionPending: false
+      })
+
     case actionTypes.queried:
       return Object.assign({}, state, {
         reservations: action.reservations

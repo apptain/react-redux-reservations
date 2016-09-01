@@ -1,6 +1,7 @@
 import { CALL_API } from 'redux-api-middleware'
 import actionTypes from '../actionTypes/reservationActionTypes'
 import settings from '../settings'
+import Reservations from '../collections/reservationsCollection'
 
 //Cool that current and past tense of Read are the same
 export function reservationsQueried(reservations){
@@ -10,7 +11,22 @@ export function reservationsQueried(reservations){
   }
 }
 
-export function reservationsSelect() {
+export function subscribe(subscription, filters, columns) {
+	const subscription = Meteor.subscribe(subscription, filters, columns)
+	const subscriber = function(subscription) {
+		Meteor.autorun(() => {
+      if(subscription.ready()){
+        return Reservations.find())
+      }
+   	})
+	} 
+	return {
+		type: actionTypes.subscriptions.subscribe,
+		subscriber: subscriber(subscription)
+	} 
+}
+
+export function select() {
   return {
     [CALL_API]: {
       method: 'get',
@@ -25,28 +41,9 @@ export function reservationsSelect() {
   }
 }
 
-export function reservationsQuery(filters) {
+export function query(filters) {
   return {
-    [CALL_API]: {
-      method: 'get',
-      endpoint: settings.apiUrl + '/publications/reservations/filtered',
-      body: JSON.stringify(filters),
-      headers: { 'Content-Type': 'application/json' },
-      types: [
-        {
-          type: actionTypes.query.request,
-          meta: { filters }
-        },
-        {
-          type: actionTypes.query.success,
-          meta: { filters }
-        },
-        {
-          type: actionTypes.query.failure,
-          meta: { filters }
-        }
-      ]
-    }
+  	 
   }
 }
 
@@ -58,9 +55,9 @@ export function reservationsChange(reservations, changeRequests) {
       body: JSON.stringify(reservations),
       headers: { 'Content-Type': 'application/json' },
       types: [
-        actionTypes.reservationsChangeRequest.request,
-        actionTypes.reservationsChangeRequest.success,
-        actionTypes.reservationsChangeRequest.failure,
+        actionTypes.change.request,
+        actionTypes.change.success,
+        actionTypes.change.failure,
       ]
     }
   }

@@ -11,19 +11,9 @@ import Reservations from '../collections/reservationsCollection'
 
 const ReservationsContainer = React.createClass({
   componentDidMount() {
-    //TODO move into actions/reducers
-    const reservationsSub = Meteor.subscribe('reservations');
-    //TODO add filter to reservationsSub. Add permissions to filter
-    //const userPermissionsSub = Meteor.subscribe('users.permissions');
-    setTimeout(this.handleSubs(reservationsSub), 0);
-  },
+   },
   handleSubs(reservationsSub) {
-    Meteor.autorun(() => {
-      if(reservationsSub.ready()){
-        this.props.reservationsReady(Reservations.find());
-      }
-    });
-  },
+   },
   render() {
     return (
       <div className="grid">

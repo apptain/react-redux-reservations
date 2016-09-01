@@ -2,6 +2,12 @@ export default {
   //temp
   queried: "RESERVATIONS_QUERIED",
 
+	subscription: {
+		subscribe: 'RESERVATIONS_SUBSCRIPTION_SUBSCRIBE',
+		ready:     'RESERVATIONS_SUBSCRIPTION_READY',
+		failure:   'RESERVATIONS_SUBSCRIPTION_FAILURE'
+	},
+
 	// api calls
   select: {
     request: 'RESERVATION_SELECT_REQUEST',
