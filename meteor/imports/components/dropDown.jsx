@@ -9,10 +9,11 @@ var DropDown = React.createClass({
     return this.props.select(e.target.value, e.target.id);
   },
   render: function(){
+    debugger;
     return (
       <select>
         {this.props.options.map(function(option){
-          return <option {option.value}>{option.name}</option>
+          return <option value={option}>{option}</option>
         })}
       </select>
     )

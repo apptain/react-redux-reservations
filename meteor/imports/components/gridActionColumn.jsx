@@ -1,27 +1,39 @@
 import React, {Component, PropTypes} from 'react'
+import MediaQuery from 'react-responsive'
 import DropDown from './dropDown'
 import LinkSet from './linkSet'
 
 var GridActionColumn = React.createClass({
   propTypes: {
-    actionInitiators: PropTypes.array.isRequired,
-    collapseOnScreenWidth: PropTypes.number
-  }
+    params: PropTypes.object
+  },
   componentWillReceiveProps: function(props) {
     this.collapseOnScreenWidth = props.collapseWidth || 700;
-  }
+  },
   render: function() {
+    this.changeInitiators = [];
+
+    for (var key in this.props.params.colDef.changeInitiators) {
+      if (this.props.params.colDef.changeInitiators.hasOwnProperty(key)) {
+        this.changeInitiators.push(key)
+      }
+    }
+    debugger
     return (
       <div>
-        <MediaQuery maxDeviceWidth={this.collapseOnScreenWidth} >
-          <LinkSet options={ this.params.actionInitiators } />
+        <MediaQuery maxWidth={999}>
+          <DropDown
+            options={ this.changeInitiators }
+          />
         </MediaQuery>
-        <MediaQuery minDeviceWidth={this.collapseOnScreenWidth} >
-          <DropDown options={ this.params.actionInitiators } />
+        <MediaQuery minWidth={1000}>
+          <LinkSet
+            options={ this.changeInitiators }
+          />
         </MediaQuery>
       </div>
     )
   }
-}
+});
 
 export default GridActionColumn;

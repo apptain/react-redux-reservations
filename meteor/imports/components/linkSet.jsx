@@ -10,11 +10,11 @@ var LinkSet = React.createClass({
   },
   render: function(){
     return (
-      <select>
+      <ul className="link-set">
         {this.props.options.map(function(option){
-          return <option {option.value}>{option.name}</option>
+          return <li><a>{option}</a></li>
         })}
-      </select>
+      </ul>
     )
   }
 })
