@@ -11,19 +11,20 @@ export function reservationsQueried(reservations){
   }
 }
 
+function subscriber = function(subscription) {
+  Meteor.autorun(() => {
+    if(subscription.ready()){
+      return Reservations.find()
+    }
+  })
+}
+
+//https://github.com/gaearon/redux-thunk
+//Use a thunk
 export function subscribe(subscription, filters, columns) {
 	const subscription = Meteor.subscribe(subscription, filters, columns)
-	const subscriber = function(subscription) {
-		Meteor.autorun(() => {
-      if(subscription.ready()){
-        return Reservations.find())
-      }
-   	})
-	} 
-	return {
-		type: actionTypes.subscriptions.subscribe,
-		subscriber: subscriber(subscription)
-	} 
+
+	return dispatch(subscriber({
 }
 
 export function select() {
@@ -43,7 +44,7 @@ export function select() {
 
 export function query(filters) {
   return {
-  	 
+
   }
 }
 
