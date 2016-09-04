@@ -8,25 +8,28 @@ var GridActionColumn = React.createClass({
     params: PropTypes.object
   },
   componentWillReceiveProps: function(props) {
-    this.collapseOnScreenWidth = props.collapseWidth || 700;
+    this.collapseOnScreenWidth = props.params.collapseWidth || 700;
   },
   render: function() {
     this.changeInitiators = [];
 
+    //Object props to array
+    //TODO Create utility
     for (var key in this.props.params.colDef.changeInitiators) {
       if (this.props.params.colDef.changeInitiators.hasOwnProperty(key)) {
         this.changeInitiators.push(key)
       }
     }
-    debugger
+
     return (
       <div>
-        <MediaQuery maxWidth={999}>
+        <MediaQuery maxWidth={ this.collapseOnScreenWidth }>
           <DropDown
             options={ this.changeInitiators }
+            onSelect={ this.props.params.onSelect }
           />
         </MediaQuery>
-        <MediaQuery minWidth={1000}>
+        <MediaQuery minWidth={ this.collapseOnScreenWidth }>
           <LinkSet
             options={ this.changeInitiators }
           />
