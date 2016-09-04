@@ -32,6 +32,7 @@ var GridActionColumn = React.createClass({
         <MediaQuery minWidth={ this.collapseOnScreenWidth }>
           <LinkSet
             options={ this.changeInitiators }
+            onSelect={ this.props.params.onSelect }
           />
         </MediaQuery>
       </div>
