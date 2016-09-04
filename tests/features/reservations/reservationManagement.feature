@@ -1,11 +1,11 @@
 Feature: Reservations Management
 
-	As a an application user, 
+	As a an application user,
   I should be able to create, read, and update reservations
 
   @watch
-  Scenario: View agency details on reservation screen
-    Then I see agency details for Group Key, Company, Agent Name, State, Account Type "Should be Buff", and SubAccount Code
+  Scenario: View reservation details on reservation screen
+    Then I see reservation details of name, time, party number, and state
 
   @watch
   Scenario: Create a reservation entry
