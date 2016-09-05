@@ -4,7 +4,7 @@ import {AgGridReact} from 'ag-grid-react';
 import {reactCellRendererFactory} from 'ag-grid-react';
 import {reactFilterFactory} from 'ag-grid-react';
 
-import reservationActionTypes from '../actionTypes/reservationActionTypes'
+import reservationActionTypes from '../../actionTypes/app/reservationActionTypes'
 
 import 'ag-grid/dist/styles/ag-grid.css';
 import 'ag-grid/dist/styles/theme-fresh.css';
@@ -39,6 +39,7 @@ var Grid = React.createClass({
             width= "700"
             rowData={this.props.rowData}
             columnDefs={this.props.columnDefs}
+            {...props}
           />
         </div>
       </div>

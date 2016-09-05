@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import Toastr from '../../components/toastr.jsx'
+import Toastr from '../../components/app/toastr.jsx'
 
 var notification = {}
 
@@ -13,6 +13,7 @@ const NotificationsContainer = React.createClass({
 });
 
 var mapStateToProps = function(state) {
+  //Monitors state to render only new notifications
   if (state.actionResults.actionResult) {
   if (notification._id != state.actionResults.actionResult._id
     && state.actionResults.actionResult.clientMessage) {
@@ -34,6 +35,7 @@ var mapStateToProps = function(state) {
 var mapDispatchToProps = function(dispatch){
   return {
     //Any interactivity from notifications would go here
+    //Great place to connect logging actions
   }
 };
 

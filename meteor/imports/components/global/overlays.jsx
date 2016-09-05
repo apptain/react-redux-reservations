@@ -16,7 +16,6 @@ var Overlays = React.createClass({
     var result;
       result = overlay.component;
     return result;
-
   }
 })
 

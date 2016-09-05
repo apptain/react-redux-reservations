@@ -1,5 +1,5 @@
-import overlays from './overlayReducers'
-import reservations from './reservationReducers'
+import overlays from './app/overlayReducers'
+import reservations from './app/reservationReducers'
 
 export default {
   overlays,

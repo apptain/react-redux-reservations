@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import actionTypes from '../actionTypes/overlayActionTypes'
+import actionTypes from '../../actionTypes/global/overlayActionTypes'
 
 const defaultState = [];
 

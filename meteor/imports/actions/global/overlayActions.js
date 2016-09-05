@@ -1,4 +1,5 @@
 export function overlayAdd(id, component, blur = true, route = null) {
+  //Would be good place to handle routing
   return {
     type: 'OVERLAY_ADD',
     id,

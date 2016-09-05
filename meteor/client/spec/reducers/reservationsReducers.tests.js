@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import reservationReducers from '../../../imports/reducers/reservationReducers'
-import actionTypes from '../../../imports/actionTypes/reservationActionTypes'
+import reservationReducers from '../../../imports/reducers/app/reservationReducers'
+import actionTypes from '../../../imports/actionTypes/app/reservationActionTypes'
 import reservationStubs from '../../../imports/stubs/reservationStubs'
 
 describe('reducers.reservations', function() {

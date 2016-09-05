@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
-import ReservationsContainer from './containers/reservationsContainer'
+import ReservationsContainer from './containers/app/reservationsContainer'
 
 
 

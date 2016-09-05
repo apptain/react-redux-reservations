@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import toastr from 'toastr'
-import "toastr/build/toastr.css"
+import "toastr.jsx/build/toastr.css"
 
 class Toastr extends Component {
   render() {

@@ -2,12 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader'
 import { browserHistory } from 'react-router'
-import * as reservationActions from '../actions/reservationActions'
-import reservationGridColumns from '../gridColumns/reservationGridColumns'
-import Grid from '../components/grid'
+import * as reservationActions from '../../actions/app/reservationActions'
+import reservationGridColumns from '../../gridColumns/reservationGridColumns'
+import Grid from '../components/app/grid'
 
-import ReservationsSchema from '../schemas/reservationSchema';
-import Reservations from '../collections/reservationsCollection'
+import ReservationsSchema from '../../schemas/reservationSchema';
+import Reservations from '../../collections/reservationsCollection'
 
 const ReservationsContainer = React.createClass({
   componentDidMount() {
