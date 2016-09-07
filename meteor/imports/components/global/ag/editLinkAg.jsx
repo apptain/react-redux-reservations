@@ -1,20 +1,13 @@
-import React from 'react'
-import Modal from '../modal'
-import Form from '../form'
+import React, { PropTypes, Component } from 'react'
 
 const Menu = React.createClass({
   propTypes: {
     params: PropTypes.shape({
-      onSelect: PropTypes.function.isRequired
+      onSelect: PropTypes.func.isRequired
     })
   },
   handleClick(e, data) {
-    this.props.overlayAdd(
-      'content',
-      <Modal id='content' overlayRemove={this.props.overlayRemove}>
-        <Form {...this.props} />
-      </Modal>
-    )
+		debugger
   },
   render() {
     return (

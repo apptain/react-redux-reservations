@@ -1,7 +1,7 @@
 import overlays from './overlayActions'
 import docs from './docActions'
 
-export default {
+export {
 	overlays,
   docs
 }

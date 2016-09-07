@@ -37,7 +37,7 @@ var Grid = React.createClass({
             width= "700"
             rowData={this.props.rowData}
             columnDefs={this.props.columnDefs}
-            {...props}
+            {...this.props}
           />
         </div>
       </div>

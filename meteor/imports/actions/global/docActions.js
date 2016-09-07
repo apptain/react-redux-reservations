@@ -5,9 +5,9 @@
 
 import actionTypes from '../../actionTypes/global'
 
-export function docsQueried(docs) {
+export function queried(docs) {
   return {
-    type: actionTypes.masterDetails,
+    type: actionTypes.docs.queried,
     docs: docs
   }
 }

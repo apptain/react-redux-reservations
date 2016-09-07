@@ -3,23 +3,25 @@ import { connect } from 'react-redux'
 import Loader from 'react-loader'
 
 import * as actions from '../../actions/global'
-import Grid from '../components/global/grid'
+import Grid from '../../components/global/grid'
 
 const MasterDetailsContainer = React.createClass({
   propTypes: {
     schema: PropTypes.object.isRequired,
+		collection: PropTypes.object.isRequired, 
     collectionName: PropTypes.string.isRequired,
-    columnDefs: PropTypes.object.isRequired
+    columnDefs: PropTypes.array.isRequired
   },
   componentDidMount() {
     //TODO move into actions/reducers
-    const docsSub = Meteor.subscribe(collectionName)
+    const docsSub = Meteor.subscribe(this.props.collectionName)
     setTimeout(this.handleSubs(docsSub), 0)
   },
   handleSubs(docsSub) {
     Meteor.autorun(() => {
       if(docsSub.ready()){
-        this.props.docsReady(docsSub.find())
+        this.props.docsReady(
+					this.props.collection.find().fetch())
       }
     })
   },
@@ -37,23 +39,24 @@ const MasterDetailsContainer = React.createClass({
 })
 
 var mapStateToProps = function(state){
-  if(doc._id) {
-    this.docModalShow(doc)
+  if(state.docs.doc._id) {
+    this.docModalShow(state.docs.doc)
   }
 
   return {
-    doc: state.masterDetails.doc,
-    docs: state.masterDetails.docs,
-    docSelectPending: state.masterDetails.docSelectPending,
-    docsQueryPending: state.masterDetails.docsQueryPending,
-    docsChangePending: state.masterDetails.docsChangePending
+    doc: state.docs.doc,
+    docs: state.docs.docs,
+    docSelectPending: state.docs.docSelectPending,
+    docsQueryPending: state.docs.docsQueryPending,
+    docsChangePending: state.docs.docsChangePending
   }
 }
 
 var mapDispatchToProps = function(dispatch){
   return {
     docsReady: function(docs){
-      dispatch(docActions.docsQueried(docs.fetch()))
+			debugger
+      dispatch(actions.docs.queried(docs))
     },
     docModalShow: function(doc) {
       dispatch(actions.overlays.add(doc._id,(
