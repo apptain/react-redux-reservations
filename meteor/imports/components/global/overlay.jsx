@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
-import cx from 'classnames';
+import React, {PropTypes} from 'react'
+import cx from 'classnames'
 
-import Animate from './animate.jsx';
+import Animate from './animate.jsx'
 
 var Overlay = React.createClass({
   propTypes: {
@@ -19,7 +19,7 @@ var Overlay = React.createClass({
     }
   },
   render: function() {
-    debugger;
+    debugger
     return (
       <div className={cx('big-overlay', this.props.switch && 'switched')}>
         <Animate transition='fadeIn'>
@@ -32,7 +32,7 @@ var Overlay = React.createClass({
         </Animate>
         {this.renderClose()}
       </div>
-    );
+    )
   },
   renderClose : function() {
     if (this.props.closable) {
@@ -40,9 +40,9 @@ var Overlay = React.createClass({
         <div className='close-button' onClick={this.props.onClose}>
           <i className='material-icons'>close</i>
         </div>
-      );
+      )
     }
   }
-});
+})
 
-export default Overlay;
+export default Overlay

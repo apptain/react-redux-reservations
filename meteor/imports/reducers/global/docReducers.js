@@ -1,8 +1,6 @@
-import actionTypes from '../../actionTypes/app/masterDetailActionTypes'
+import actionTypes from '../../actionTypes/global'
 
 const initialState = {
-  schema: null,
-  collection: null,
 	doc: {},
   docSelectPending: false,
 	docs: [],
@@ -13,46 +11,46 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     //publication
-    case actionTypes.queried:
+    case actionTypes.docs.queried:
       return Object.assign({}, state, {
         docs: action.docs
       })
-    case actionTypes.select.request:
+    case actionTypes.docs.select.request:
       return Object.assign({}, state, {
         docSelectPending: true
       })
-    case actionTypes.select.success:
+    case actionTypes.docs.select.success:
       return Object.assign({}, state, {
         docSelectPending: false,
         doc: action.payload,
       })
-    case actionTypes.select.failure:
+    case actionTypes.docs.select.failure:
       return Object.assign({}, state, {
         docSelectPending: false
       })
-    case actionTypes.query.request:
+    case actionTypes.docs.query.request:
       return Object.assign({}, state, {
         docsQueryPending: true
       })
-    case actionTypes.query.success:
+    case actionTypes.docs.query.success:
       return Object.assign({}, state, {
         docsQueryPending: false,
         docs: action.payload
       })
-    case actionTypes.query.failure:
+    case actionTypes.docs.query.failure:
       return Object.assign({}, state, {
         docsChangePending: false
       })
-    case actionTypes.change.request:
+    case actionTypes.docs.change.request:
       return Object.assign({}, state, {
         docsChangePending: true
       })
-    case actionTypes.change.success:
+    case actionTypes.docs.change.success:
       return Object.assign({}, state, {
         docsChangePending: false,
         doc: action.payload
       })
-    case actionTypes.change.failure:
+    case actionTypes.docs.change.failure:
       return Object.assign({}, state, {
         docsChangePending: false
       })

@@ -1,8 +1,7 @@
 import overlays from './overlayActionTypes'
-import masterDetails from './masterDetailActionTypes'
+import docs from './docActionTypes'
 
 export default {
 	overlays,
-  masterDetails,
-	reservations
+  docs
 }

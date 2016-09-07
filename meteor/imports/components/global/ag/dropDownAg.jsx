@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import classnames from 'classnames';
+import React, {Component, PropTypes} from 'react'
+import classnames from 'classnames'
 
 var DropDownAg = React.createClass({
   propTypes: {
@@ -9,7 +9,7 @@ var DropDownAg = React.createClass({
     })
   },
   handleSelect: function(e){
-    return this.props.select(e.target.value, e.target.id);
+    return this.props.select(e.target.value, e.target.id)
   },
   render: function(){
     return (
@@ -25,4 +25,4 @@ var DropDownAg = React.createClass({
   }
 })
 
-export default DropDownAg;
+export default DropDownAg

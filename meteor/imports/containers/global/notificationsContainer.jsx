@@ -10,7 +10,7 @@ const NotificationsContainer = React.createClass({
       <Toastr notification={this.props.notification} />
     )
   },
-});
+})
 
 var mapStateToProps = function(state) {
   //Monitors state to render only new notifications
@@ -37,6 +37,6 @@ var mapDispatchToProps = function(dispatch){
     //Any interactivity from notifications would go here
     //Great place to connect logging actions
   }
-};
+}
 
-export default connect(mapStateToProps,mapDispatchToProps)(NotificationsContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(NotificationsContainer)

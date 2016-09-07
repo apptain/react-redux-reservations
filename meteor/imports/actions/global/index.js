@@ -1,7 +1,7 @@
 import overlays from './overlayActions'
-import masterDetails from './masterDetailActions'
+import docs from './docActions'
 
 export default {
 	overlays,
-  masterDetails
+  docs
 }

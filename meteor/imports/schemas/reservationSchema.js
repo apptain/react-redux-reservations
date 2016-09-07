@@ -1,4 +1,4 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 
 const ReservationSchema = new SimpleSchema({
   _id: {
@@ -39,7 +39,7 @@ const ReservationSchema = new SimpleSchema({
       type: 'hidden'
     }
   }
-});
+})
 
 
-export default ReservationSchema;
+export default ReservationSchema

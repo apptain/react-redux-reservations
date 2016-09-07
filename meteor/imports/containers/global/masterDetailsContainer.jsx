@@ -1,111 +1,87 @@
-import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
 import Loader from 'react-loader'
 
-import * as reservationActions from '../../actions/app/reservationActions'
-import reservationGridColumns from '../../gridColumns/reservationGridColumns'
-import Grid from '../components/app/grid'
-
-import ReservationsSchema from '../../schemas/reservationSchema';
-import Reservations from '../../collections/reservationsCollection'
+import * as actions from '../../actions/global'
+import Grid from '../components/global/grid'
 
 const MasterDetailsContainer = React.createClass({
+  propTypes: {
+    schema: PropTypes.object.isRequired,
+    collectionName: PropTypes.string.isRequired,
+    columnDefs: PropTypes.object.isRequired
+  },
   componentDidMount() {
     //TODO move into actions/reducers
-    const reservationsSub = Meteor.subscribe('reservations');
-    //TODO add filter to reservationsSub. Add permissions to filter
-    //const userPermissionsSub = Meteor.subscribe('users.permissions');
-    setTimeout(this.handleSubs(reservationsSub), 0);
+    const docsSub = Meteor.subscribe(collectionName)
+    setTimeout(this.handleSubs(docsSub), 0)
   },
-  handleSubs(reservationsSub) {
+  handleSubs(docsSub) {
     Meteor.autorun(() => {
-      if(reservationsSub.ready()){
-        this.props.reservationsReady(Reservations.find());
+      if(docsSub.ready()){
+        this.props.docsReady(docsSub.find())
       }
-    });
+    })
   },
   render() {
     return (
       <div className="grid">
-        { this.props.reservations ?
-          <Grid rowData={this.props.reservations} columnDefs={reservationGridColumns} />
+        { this.props.docs ?
+          <Grid rowData={this.props.docs} columnDefs={this.props.columnDefs} />
           :
           <div>No Data</div>
         }
       </div>
     )
   }
-});
+})
 
 var mapStateToProps = function(state){
-  return {
-    reservations: state.reservations.reservations
+  if(doc._id) {
+    this.docModalShow(doc)
   }
-};
+
+  return {
+    doc: state.masterDetails.doc,
+    docs: state.masterDetails.docs,
+    docSelectPending: state.masterDetails.docSelectPending,
+    docsQueryPending: state.masterDetails.docsQueryPending,
+    docsChangePending: state.masterDetails.docsChangePending
+  }
+}
 
 var mapDispatchToProps = function(dispatch){
   return {
-    reservationsReady: function(reservations){
-      dispatch(reservationActions.reservationsQueried(reservations.fetch()));
-    }
-  }
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(MasterDetailsContainer);
-
-
-import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-import 
-import actionTypes from '../../actionTypes'
-
-const MasterDetailsContainer = React.createClass({
-  render() {
-    return (
-      <MasterDetails  />
-    )
-  }
-});
-
-var mapStateToProps = function(state){
-  // this is a great place to handle component reactivity 
-  // and concentrate reactivity
-  // to props is a great place to handle for asynchronicity ?? - No That's what middleware is for
-  
-  return {
-    selected
-  }
-};
-
-var mapDispatchToProps = function(dispatch){
-    return {
-      docCreateModalOpen: function(e)
-      {
-        dispatch(actions.docCreateShow(doc._id,(
-            <Modal id='content'>
-              <Form 
-                schema=""
-              />
-            </Modal>
-          )
+    docsReady: function(docs){
+      dispatch(docActions.docsQueried(docs.fetch()))
+    },
+    docModalShow: function(doc) {
+      dispatch(actions.overlays.add(doc._id,(
+        <Modal id='content'>
+          <Form
+            schema={this.props.schema}
+            doc={doc}
+            onSubmit={this.props.docUpsert}
+            formId={this.props.collectionName}
+          />
+        </Modal>
+      )))
+    },
+    docModalClose: function(e) {
+      //TODO Change to key?
+      dispatch(actions.overlays.remove(e.target.id))
+    },
+    docUpsert: function(doc){
+      if(doc) {
+        if (!doc.agentId) {
+          doc.agentId = agentId
         }
-      },
-      docEditModalShow: function(e) {
-        dispatch(actions.docCreateShow(doc._id,(
-          <Modal id='content'>
-            <Form
-              schema=""
-            />
-          </Modal>
-        )
+        dispatch(actions.docs.docUpsert(doc))
       }
-      },
-      docModalClose: function(e) {
-        
-      }
-    )
+    },
     //Would be a good place for any entire dataset searches
   }
-};
+}
 
-export default connect(mapStateToProps,mapDispatchToProps)(MasterDetailsContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(MasterDetailsContainer)
+

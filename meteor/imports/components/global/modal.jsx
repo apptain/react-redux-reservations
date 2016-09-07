@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import Animate from './animate.jsx';
+import React, {PropTypes} from 'react'
+import Animate from './animate'
 
 var Modal = React.createClass({
   propTypes: {
@@ -7,8 +7,8 @@ var Modal = React.createClass({
     children: PropTypes.node
   },
   close: function(event) {
-    event.preventDefault();
-    this.props.onClose && this.props.onClose();
+    event.preventDefault()
+    this.props.onClose && this.props.onClose()
   },
   render: function() {
     return (
@@ -28,8 +28,8 @@ var Modal = React.createClass({
           </div>
         </Animate>
       </div>
-    );
+    )
   }
 })
 
-export default Modal;
+export default Modal

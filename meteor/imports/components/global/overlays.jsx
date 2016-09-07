@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import Overlay from './overlay.jsx';
+import React, {PropTypes} from 'react'
+import Overlay from './overlay.jsx'
 
 var Overlays = React.createClass({
   propTypes: {
@@ -10,13 +10,13 @@ var Overlays = React.createClass({
       <div>
         {this.props.overlays.map(this.renderOverlay, this)}
       </div>
-    );
+    )
   },
   renderOverlay: function(overlay) {
-    var result;
-      result = overlay.component;
-    return result;
+    var result
+      result = overlay.component
+    return result
   }
 })
 
-export default Overlays;
+export default Overlays

@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react'
 import toastr from 'toastr'
 import "toastr.jsx/build/toastr.css"
 
