@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import Overlay from './overlay.jsx'
 
-var Overlays = React.createClass({
+const Overlays = React.createClass({
   propTypes: {
     overlays: PropTypes.array.isRequired
   },

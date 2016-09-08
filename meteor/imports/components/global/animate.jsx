@@ -2,7 +2,7 @@ import Velocity from 'velocity-animate'
 import React, {PropTypes} from 'react'
 import {findDOMNode} from 'react-dom'
 
-var Animate = React.createClass({
+const Animate = React.createClass({
   propTypes: {
     transition: PropTypes.string,
     duration: PropTypes.number,
@@ -26,3 +26,5 @@ var Animate = React.createClass({
     return this.props.children
   }
 })
+
+export default Animate

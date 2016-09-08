@@ -1,19 +1,26 @@
-import React, { PropTypes, Component } from 'react'
+import React from 'react'
+import Modal from '../modal'
+import Form from '../form'
 
-const Menu = React.createClass({
-  propTypes: {
-    params: PropTypes.shape({
-      onSelect: PropTypes.func.isRequired
-    })
-  },
+const EditLinkAg = React.createClass({
+  // propTypes: {
+  //   params: PropType.shape({
+  //     onClick: PropTypes.function.isRequired
+  //   })
+  // },
   handleClick(e, data) {
-		debugger
+    debugger
   },
   render() {
     return (
-      <a href="#" onClick={this.handleClick}>Edit</a>
+      <a
+        href="#"
+        id={this.props.params.data._id}
+        key={this.props.params.data._id}
+        onClick={this.handleClick}
+      >Edit</a>
     )
   }
 })
 
-export default Menu
+export default EditLinkAg

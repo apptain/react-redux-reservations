@@ -7,7 +7,7 @@ import {reactFilterFactory} from 'ag-grid-react'
 import 'ag-grid/dist/styles/ag-grid.css'
 import 'ag-grid/dist/styles/theme-fresh.css'
 
-var Grid = React.createClass({
+const Grid = React.createClass({
   propTypes: {
     columnDefs: PropTypes.array.isRequired,
     rowData: PropTypes.array.isRequired

@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 import Animate from './animate.jsx'
 
-var Overlay = React.createClass({
+const Overlay = React.createClass({
   propTypes: {
     children: PropTypes.node.isRequired,
     transition: PropTypes.string,

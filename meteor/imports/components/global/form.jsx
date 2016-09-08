@@ -5,7 +5,7 @@ import { Template } from 'meteor/templating'
 import { AutoForm } from 'meteor/aldeed:autoform'
 
 
-var Form = React.createClass({
+const Form = React.createClass({
   propTypes: {
     schema: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import Animate from './animate'
 
-var Modal = React.createClass({
+const Modal = React.createClass({
   propTypes: {
     onClose: PropTypes.func,
     children: PropTypes.node
