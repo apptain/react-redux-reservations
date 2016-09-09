@@ -11,9 +11,8 @@ const Modal = React.createClass({
     this.props.onClose && this.props.onClose()
   },
   render() {
-		debugger
     return (
-      <div className='modal'>
+      <div>
         <Animate transition='fadeIn'>
           <div className='modal-background'></div>
         </Animate>

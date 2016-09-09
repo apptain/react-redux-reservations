@@ -15,12 +15,13 @@ const Animate = React.createClass({
     }
   },
   componentDidMount() {
+		debugger
     const dom = findDOMNode(this)
     const transition = 'transition.' + this.props.transition
-    Velocity(dom, transition, {
-      duration: this.props.duration,
-      display: null
-    })
+    // Velocity(dom, transition, {
+    //   duration: this.props.duration,
+    //   display: null
+    // })
   },
   render() {
     return this.props.children
