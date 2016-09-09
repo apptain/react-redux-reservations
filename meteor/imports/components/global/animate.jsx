@@ -8,13 +8,13 @@ const Animate = React.createClass({
     duration: PropTypes.number,
     children: PropTypes.node
   },
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
       transition: 'slideUpIn',
       duration: 400
     }
   },
-  componentDidMount: function() {
+  componentDidMount() {
     const dom = findDOMNode(this)
     const transition = 'transition.' + this.props.transition
     Velocity(doam, transition, {
@@ -22,7 +22,7 @@ const Animate = React.createClass({
       display: null
     })
   },
-  render: function() {
+  render() {
     return this.props.children
   }
 })

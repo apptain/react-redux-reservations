@@ -2,7 +2,7 @@ import faker from 'faker'
 import {Mongo} from 'meteor/mongo'
 
 export default {
-  stub: function() {
+  stub() {
     const newID = new Mongo.ObjectID
     return {
       _id: newID._str,
@@ -14,9 +14,9 @@ export default {
     }
   },
   //TODO Make abstract
-  stubs: function(count){
+  stubs(count) {
     var stubs = []
-    for(i = 0; i < count; i++){
+    for(i = 0; i < count; i++) {
       stubs.push(this.stub())
     }
     return stubs

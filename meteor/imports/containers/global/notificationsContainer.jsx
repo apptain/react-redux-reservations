@@ -32,7 +32,7 @@ var mapStateToProps = function(state) {
   }
 }
 
-var mapDispatchToProps = function(dispatch){
+var mapDispatchToProps = function(dispatch) {
   return {
     //Any interactivity from notifications would go here
     //Great place to connect logging actions

@@ -12,11 +12,11 @@ const Grid = React.createClass({
     columnDefs: PropTypes.array.isRequired,
     rowData: PropTypes.array.isRequired
   },
-  onGridReady: function(params) {
+  onGridReady(params) {
     this.api = params.api
     this.columnApi = params.columnApi
   },
-  componentDidMount: function() {
+  componentDidMount() {
     //Autoset column sizes
     var allColumnIds = []
     this.refs.agGrid.gridOptions.columnDefs.forEach(function(columnDef) {
@@ -26,7 +26,7 @@ const Grid = React.createClass({
 
     this.refs.agGrid.gridOptions.api.sizeColumnsToFit()
   },
-  render: function() {
+  render() {
     //TODO Refactor below line out out if/when possible
     this.gridOptions = { columnDefs: this.props.columnDefs, rowData: this.props.rowData}
     return (

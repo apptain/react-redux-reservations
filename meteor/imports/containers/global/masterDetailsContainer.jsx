@@ -21,14 +21,14 @@ const MasterDetailsContainer = React.createClass({
   },
   handleSubs(docsSub) {
     Meteor.autorun(() => {
-      if(docsSub.ready()){
+      if(docsSub.ready()) {
         this.props.docsReady(
 					this.props.collection.find().fetch())
       }
     })
   },
   onRowSelected(event) {
-  	debugger; 
+
   },
   render() {
     return (
@@ -47,7 +47,7 @@ const MasterDetailsContainer = React.createClass({
   }
 })
 
-var mapStateToProps = function(state){
+var mapStateToProps = function(state) {
   if(state.docs.doc._id) {
     this.docModalShow(state.docs.doc)
   }
@@ -61,13 +61,13 @@ var mapStateToProps = function(state){
   }
 }
 
-var mapDispatchToProps = function(dispatch){
+var mapDispatchToProps = function(dispatch) {
   return {
-    docsReady: function(docs){
+    docsReady(docs) {
 			debugger
       dispatch(actions.docs.queried(docs))
     },
-    docModalShow: function(doc) {
+    docModalShow(doc) {
       dispatch(actions.overlays.add(doc._id,(
         <Modal id='content'>
           <Form
@@ -79,11 +79,11 @@ var mapDispatchToProps = function(dispatch){
         </Modal>
       )))
     },
-    docModalClose: function(e) {
+    docModalClose(e) {
       //TODO Change to key?
       dispatch(actions.overlays.remove(e.target.id))
     },
-    docUpsert: function(doc){
+    docUpsert(doc) {
       if(doc) {
         if (!doc.agentId) {
           doc.agentId = agentId

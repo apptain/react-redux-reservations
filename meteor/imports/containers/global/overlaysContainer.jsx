@@ -10,7 +10,7 @@ const OverlaysContainer = React.createClass({
 })
 
 // now we connect the component to the Redux store:
-var mapStateToProps = function(state){
+var mapStateToProps = function(state) {
   return {
     reservations: state.overlays.overlays
   }

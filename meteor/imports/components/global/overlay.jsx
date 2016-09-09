@@ -11,14 +11,14 @@ const Overlay = React.createClass({
     switch: PropTypes.bool,
     onClose: PropTypes.func.isRequired
   },
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
       transition: 'slideUpIn',
       closable: true,
       switch: false
     }
   },
-  render: function() {
+  render() {
     debugger
     return (
       <div className={cx('big-overlay', this.props.switch && 'switched')}>
@@ -34,7 +34,7 @@ const Overlay = React.createClass({
       </div>
     )
   },
-  renderClose : function() {
+  renderClose () {
     if (this.props.closable) {
       return (
         <div className='close-button' onClick={this.props.onClose}>

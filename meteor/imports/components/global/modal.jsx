@@ -6,11 +6,11 @@ const Modal = React.createClass({
     onClose: PropTypes.func,
     children: PropTypes.node
   },
-  close: function(event) {
+  close(event) {
     event.preventDefault()
     this.props.onClose && this.props.onClose()
   },
-  render: function() {
+  render() {
     return (
       <div className='modal'>
         <Animate transition='fadeIn'>

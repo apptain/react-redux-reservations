@@ -13,7 +13,7 @@ const Form = React.createClass({
     formId: PropTypes.string,
     buttonText: PropTypes.string
   },
-  componentDidMount: function() {
+  componentDidMount() {
     const container = this.refs.blazeContainer
     this.doc = new ReactiveVar(this.props.doc)
     // this.formResetting = new ReactiveVar(this.props.formResetting)
@@ -39,7 +39,7 @@ const Form = React.createClass({
       })
     }
     template.helpers({
-      document: function(){
+      document() {
         if(this.doc) {
           var doc = this.doc.get()
 
@@ -68,13 +68,13 @@ const Form = React.createClass({
 
     this.blazeView = Blaze.renderWithData(template, data, container)
   },
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     Blaze.remove(this.blazeView)
   },
-  componentWillReceiveProps: function(props) {
+  componentWillReceiveProps(props) {
     this.doc.set(props.doc)
   },
-  render: function() {
+  render() {
     return (
       <div>
         <div ref="blazeContainer"></div>

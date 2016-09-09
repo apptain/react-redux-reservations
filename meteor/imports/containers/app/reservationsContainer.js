@@ -5,7 +5,7 @@ import collections from '../../collections'
 import reservationColumnDefs from '../../columnDefs/reservationColumnDefs'
 
 const ReservationsContainer = React.createClass({
-  render: function() {
+  render() {
     return (
       <div>
         <MasterDetailsContainer

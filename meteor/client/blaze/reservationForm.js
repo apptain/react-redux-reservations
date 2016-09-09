@@ -7,7 +7,7 @@ Template.ReservationForm.created = function () {
   instance.formResetting = this.data.formResetting;
   instance.form = new ReactiveVar(null);
 
-  instance.autorun(function(){
+  instance.autorun(function() {
     if(Template.instance().formResetting.get() && Template.instance().form.get()) {
       Template.instance().form.get().reset();
       Template.instance().formReset();

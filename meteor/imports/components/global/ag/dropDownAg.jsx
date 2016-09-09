@@ -8,13 +8,13 @@ var DropDownAg = React.createClass({
       onSelect: PropTypes.function.isRequired
     })
   },
-  handleSelect: function(e){
+  handleSelect(e) {
     return this.props.select(e.target.value, e.target.id)
   },
-  render: function(){
+  render() {
     return (
       <select>
-        {this.props.options.map(function(option){
+        {this.props.options.map(function(option) {
           return 
             <option value={option.name || option}>
               {option.value || option}

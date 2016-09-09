@@ -5,14 +5,14 @@ const Overlays = React.createClass({
   propTypes: {
     overlays: PropTypes.array.isRequired
   },
-  render: function() {
+  render() {
     return (
       <div>
         {this.props.overlays.map(this.renderOverlay, this)}
       </div>
     )
   },
-  renderOverlay: function(overlay) {
+  renderOverlay(overlay) {
     var result
       result = overlay.component
     return result
