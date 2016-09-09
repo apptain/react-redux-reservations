@@ -17,7 +17,7 @@ const Animate = React.createClass({
   componentDidMount() {
     const dom = findDOMNode(this)
     const transition = 'transition.' + this.props.transition
-    Velocity(doam, transition, {
+    Velocity(dom, transition, {
       duration: this.props.duration,
       display: null
     })

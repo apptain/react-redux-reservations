@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import Toastr from '../../components/app/toastr.jsx'
+import Toastr from '../../components/global/toastr'
 
 var notification = {}
 

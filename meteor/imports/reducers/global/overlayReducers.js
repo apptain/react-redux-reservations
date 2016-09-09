@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import actionTypes from '../../actionTypes/global/overlayActionTypes'
 
-const defaultState = []
+const overlays = []
 
-export default function overlaysReducer (state = defaultState, action = {}) {
+export default function overlaysReducer (state = overlays, action = {}) {
   switch (action.type) {
     case actionTypes.add:
       debugger;
