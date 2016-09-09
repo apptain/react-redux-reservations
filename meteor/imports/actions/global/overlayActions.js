@@ -1,16 +1,19 @@
-export function overlayAdd(id, component, blur = true, route = null) {
+import actionTypes from '../../actionTypes/global'
+
+export function add(id, component, blur = true, route = null) {
   //Would be good place to handle routing
+  debugger;
   return {
-    type: 'OVERLAY_ADD',
+    type: actionTypes.overlays.add,
     id,
     blur,
     component
   }
 }
 
-export function overlayRemove(id) {
+export function remove(id) {
   return {
-    type: 'OVERLAY_REMOVE',
+    type: actionTypes.overlays.remove,
     id
   }
 }

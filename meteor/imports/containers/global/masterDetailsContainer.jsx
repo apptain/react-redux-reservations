@@ -10,7 +10,7 @@ import Form from '../../components/global/form'
 const MasterDetailsContainer = React.createClass({
   propTypes: {
     schema: PropTypes.object.isRequired,
-		collection: PropTypes.object.isRequired, 
+		collection: PropTypes.object.isRequired,
     collectionName: PropTypes.string.isRequired,
     columnDefs: PropTypes.array.isRequired
   },
@@ -27,16 +27,28 @@ const MasterDetailsContainer = React.createClass({
       }
     })
   },
-  onRowSelected(event) {
-
+  onRowSelected(e) {
+    debugger;
+    this.props.docModalShow(e.node.data)
+    // actions.overlays.add(
+    //   e.node.data._id,
+    //   <Modal>
+    //     <Form
+    //       schema={this.props.schema}
+    //       onSubmit: PropTypes.func.isRequired,
+    //       doc: PropTypes.object,
+    //       formId: PropTypes.string,
+    //      />
+    //   </Modal>
+    // );
   },
   render() {
     return (
       <div className="grid">
         { this.props.docs ?
-          <Grid 
-						rowData={this.props.docs} 
-						columnDefs={this.props.columnDefs} 
+          <Grid
+						rowData={this.props.docs}
+						columnDefs={this.props.columnDefs}
             onRowSelected={this.onRowSelected.bind(this)}
 					/>
           :
@@ -68,13 +80,14 @@ var mapDispatchToProps = function(dispatch) {
       dispatch(actions.docs.queried(docs))
     },
     docModalShow(doc) {
+      debugger
       dispatch(actions.overlays.add(doc._id,(
         <Modal id='content'>
           <Form
-            schema={this.props.schema}
+            schema={this.schema}
             doc={doc}
-            onSubmit={this.props.docUpsert}
-            formId={this.props.collectionName}
+            onSubmit={this.docUpsert}
+            formId={this.collectionName}
           />
         </Modal>
       )))

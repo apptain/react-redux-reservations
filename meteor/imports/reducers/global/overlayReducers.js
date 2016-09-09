@@ -6,6 +6,7 @@ const defaultState = []
 export default function overlaysReducer (state = defaultState, action = {}) {
   switch (action.type) {
     case actionTypes.add:
+      debugger;
       return [...state, {
         id: action.id,
         blur: action.blur,
