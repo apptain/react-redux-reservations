@@ -4,6 +4,8 @@ import Loader from 'react-loader'
 
 import * as actions from '../../actions/global'
 import Grid from '../../components/global/grid'
+import Modal from '../../components/global/modal'
+import Form from '../../components/global/form'
 
 const MasterDetailsContainer = React.createClass({
   propTypes: {
@@ -25,11 +27,18 @@ const MasterDetailsContainer = React.createClass({
       }
     })
   },
+  onRowSelected(event) {
+  	debugger; 
+  },
   render() {
     return (
       <div className="grid">
         { this.props.docs ?
-          <Grid rowData={this.props.docs} columnDefs={this.props.columnDefs} />
+          <Grid 
+						rowData={this.props.docs} 
+						columnDefs={this.props.columnDefs} 
+            onRowSelected={this.onRowSelected.bind(this)}
+					/>
           :
           <div>No Data</div>
         }
