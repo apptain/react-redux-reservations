@@ -2,7 +2,6 @@ import actionTypes from '../../actionTypes/global'
 
 export function add(id, component, blur = true, route = null) {
   //Would be good place to handle routing
-  debugger;
   return {
     type: actionTypes.overlays.add,
     id,

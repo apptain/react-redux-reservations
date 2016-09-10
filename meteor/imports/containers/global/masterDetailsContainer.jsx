@@ -28,19 +28,7 @@ const MasterDetailsContainer = React.createClass({
     })
   },
   onRowSelected(e) {
-    debugger;
     this.props.docModalShow(e.node.data)
-    // actions.overlays.add(
-    //   e.node.data._id,
-    //   <Modal>
-    //     <Form
-    //       schema={this.props.schema}
-    //       onSubmit: PropTypes.func.isRequired,
-    //       doc: PropTypes.object,
-    //       formId: PropTypes.string,
-    //      />
-    //   </Modal>
-    // );
   },
   render() {
     return (
@@ -76,11 +64,9 @@ var mapStateToProps = function(state) {
 var mapDispatchToProps = function(dispatch) {
   return {
     docsReady(docs) {
-			debugger
       dispatch(actions.docs.queried(docs))
     },
     docModalShow(doc) {
-      debugger
       dispatch(actions.overlays.add(doc._id,(
         <Modal id='content'>
           <Form

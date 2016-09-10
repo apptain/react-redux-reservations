@@ -19,7 +19,6 @@ const Overlay = React.createClass({
     }
   },
   render() {
-    debugger
     return (
       <div className={cx('big-overlay', this.props.switch && 'switched')}>
         <Animate transition='fadeIn'>

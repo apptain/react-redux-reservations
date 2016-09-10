@@ -6,7 +6,6 @@ import reservationColumnDefs from '../../columnDefs/reservationColumnDefs'
 
 const ReservationsContainer = React.createClass({
   render() {
-debugger
     return (
       <div>
         <MasterDetailsContainer

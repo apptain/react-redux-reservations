@@ -75,7 +75,6 @@ const Form = React.createClass({
     this.doc.set(props.doc)
   },
   render() {
-debugger
     return (
       <div>
         <div ref="blazeContainer"></div>
