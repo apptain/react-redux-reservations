@@ -3,7 +3,9 @@
 //medium?
 //https://medium.com/front-end-developers/how-we-redux-part-1-introduction-18a24c3b7efe#.9gjieumw1
 
+import { CALL_API } from 'redux-api-middleware'
 import actionTypes from '../../actionTypes/global'
+import settings from '../../settings' 
 
 export function queried(docs) {
   return {
@@ -12,11 +14,12 @@ export function queried(docs) {
   }
 }
 
-export function docSelect(docForm) {
+export function select(id) {
+	debugger
   return {
     [CALL_API]: {
       method: 'get',
-      endpoint: settings.apiUrl + '/methods/docs/select',
+      endpoint: settings.apiUrl + '/methods/docs/select/' + id,
       headers: { 'Content-Type': 'application/json' },
       types: [
         actionTypes.docs.select.request,
@@ -28,7 +31,7 @@ export function docSelect(docForm) {
 }
 
 //Couch doc carries doc type
-export function docsChange(docs, changeRequests) {
+export function change(docs, changeRequests) {
   return {
     [CALL_API]: {
       method: 'post',

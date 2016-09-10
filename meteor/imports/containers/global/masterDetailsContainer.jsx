@@ -28,7 +28,7 @@ const MasterDetailsContainer = React.createClass({
     })
   },
   onRowSelected(e) {
-    this.props.docModalShow(e.node.data)
+    this.props.docSelect(e.node.data._id)
   },
   render() {
     return (
@@ -66,6 +66,10 @@ var mapDispatchToProps = function(dispatch) {
     docsReady(docs) {
       dispatch(actions.docs.queried(docs))
     },
+		docSelect(id) {
+			debugger
+			dispatch(actions.docs.select(id))
+		},
     docModalShow(doc) {
       dispatch(actions.overlays.add(doc._id,(
         <Modal id='content'>
@@ -95,4 +99,3 @@ var mapDispatchToProps = function(dispatch) {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(MasterDetailsContainer)
-

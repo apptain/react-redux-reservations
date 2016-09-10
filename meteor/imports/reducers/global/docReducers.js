@@ -16,10 +16,12 @@ export default (state = initialState, action) => {
         docs: action.docs
       })
     case actionTypes.docs.select.request:
+			debugger
       return Object.assign({}, state, {
         docSelectPending: true
       })
     case actionTypes.docs.select.success:
+			debugger
       return Object.assign({}, state, {
         docSelectPending: false,
         doc: action.payload,
