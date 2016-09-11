@@ -1,9 +1,9 @@
-import {Content, Comments} from '/imports/collections';
+import * as Collections from '/imports/collections';
 
 export default function () {
   // SimpleRest.setMethodOptions('docs/change', options);
   Meteor.methods({
-    'docsUpsert': function (docs) {
+    'docUpsert': function (collectionName, docs) {
       var changeFunction = function (doc) {
           return docs.update({'_id': doc._id},
               {status: "canceled"}, {change: "true"});
