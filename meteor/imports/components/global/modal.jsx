@@ -3,19 +3,19 @@ import Animate from './animate'
 
 const Modal = React.createClass({
   propTypes: {
-    onClose: PropTypes.func,
-    children: PropTypes.node
+		id: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired
   },
   close(e) {
     debugger
-    this.props.onClose(e)
+    this.props.onClose(this.props.id)
   },
   render: function() {
     return (
       <div className="window-wrap">
         <div className="window-dialog">
           <div className="window-header">
-            <h2></h2>
             <div className='modal-close' onClick={this.close}>
               <i aria-hidden="true">x</i>
             </div>

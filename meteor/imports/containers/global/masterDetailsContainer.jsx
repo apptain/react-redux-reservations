@@ -64,32 +64,27 @@ var mapDispatchToProps = function(dispatch) {
     },
     docModalShow(doc) {
       dispatch(actions.overlays.add(doc._id,(
-        <Modal id='content'
+        <Modal id={doc._id || 'new' + this.collectionName}
           onClose={this.docModalClose}>
           <Form
             schema={this.schema}
             doc={doc}
             onSubmit={this.docUpsert}
-            formId={this.collectionName}
+           	formId={doc._id || 'new' + this.collectionName}
           />
         </Modal>
       )))
     },
-    docModalClose(e) {
-      //TODO Change to key?
-      debugger
-      dispatch(actions.overlays.remove(e.target.id))
+    docModalClose(id) {
+      dispatch(actions.overlays.remove(id))
     },
     docUpsert(doc) {
-      if(doc) {
-        if (!doc.agentId) {
-          doc.agentId = agentId
-        }
-        dispatch(actions.docs.docUpsert(doc))
-      }
+      dispatch(actions.docs.upsert(doc))
     },
     //Would be a good place for any entire dataset searches
   }
 }
+
+export {MasterDetailsContainer}
 
 export default connect(mapStateToProps,mapDispatchToProps)(MasterDetailsContainer)

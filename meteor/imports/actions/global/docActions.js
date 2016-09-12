@@ -14,34 +14,21 @@ export function queried(docs) {
   }
 }
 
-export function select(id) {
+export function upsert(doc) {
 	debugger
   return {
     [CALL_API]: {
-      method: 'get',
-      endpoint: settings.apiUrl + '/methods/docs/select/' + id,
-      headers: { 'Content-Type': 'application/json' },
-      types: [
-        actionTypes.docs.select.request,
-        actionTypes.docs.select.success,
-        actionTypes.docs.select.failure,
-      ]
-    }
-  }
-}
-
-//Couch doc carries doc type
-export function change(docs, changeRequests) {
-  return {
-    [CALL_API]: {
       method: 'post',
-      endpoint: settings.apiUrl + '/methods/docs/change-request',
-      body: JSON.stringify(docs),
+      endpoint: settings.apiUrl + '/methods/docUpsert',
+      body: JSON.stringify({
+				collectionName: 'Reservations',
+				doc
+			}),
       headers: { 'Content-Type': 'application/json' },
       types: [
-        actionTypes.docs.docsChangeRequest.request,
-        actionTypes.docs.docsChangeRequest.success,
-        actionTypes.docs.docsChangeRequest.failure,
+        actionTypes.docs.upsert.request,
+        actionTypes.docs.upsert.success,
+        actionTypes.docs.upsert.failure,
       ]
     }
   }

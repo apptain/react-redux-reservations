@@ -31,6 +31,6 @@ mizzao:bootstrap-3
 aldeed:collection2
 aldeed:autoform
 lukemadera:autoform-autocomplete
-tsega:bootstrap3-datetimepicker
+tsega:bootstrap3-datetimepicker@=3.1.3_3
 aldeed:autoform-bs-datetimepicker
 

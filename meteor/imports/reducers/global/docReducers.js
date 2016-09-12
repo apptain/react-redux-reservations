@@ -5,7 +5,7 @@ const initialState = {
   docSelectPending: false,
 	docs: [],
   docsQueryPending: false,
-  docsChangePending: false
+  docsUpsertPending: false
 }
 
 export default (state = initialState, action) => {
@@ -41,20 +41,22 @@ export default (state = initialState, action) => {
       })
     case actionTypes.docs.query.failure:
       return Object.assign({}, state, {
-        docsChangePending: false
+        docsUpsertPending: false
       })
-    case actionTypes.docs.change.request:
+    case actionTypes.docs.upsert.request:
+			debugger
       return Object.assign({}, state, {
-        docsChangePending: true
+        docsUpsertPending: true
       })
-    case actionTypes.docs.change.success:
+    case actionTypes.docs.upsert.success:
+			debugger
       return Object.assign({}, state, {
-        docsChangePending: false,
+        docsUpsertPending: false,
         doc: action.payload
       })
-    case actionTypes.docs.change.failure:
+    case actionTypes.docs.upsert.failure:
       return Object.assign({}, state, {
-        docsChangePending: false
+        docsUpsertPending: false
       })
     default:
       return state

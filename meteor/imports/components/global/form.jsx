@@ -33,8 +33,7 @@ const Form = React.createClass({
           //TODO Add error handling logging for anything not a standard validation
         },
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
-          //TODO refactor out submit map for now
-          this.template.data.eventMap.submit(insertDoc)
+          this.template.data.eventMap.onSubmit(insertDoc)
         }
       })
     }
@@ -42,7 +41,7 @@ const Form = React.createClass({
       document() {
         if(this.doc) {
           var doc = this.doc.get()
-
+					//Refactors to start lower case. Helpful for .NET and EF
           //TODO Move to utiltity and perform out of component
           var key, keys = Object.keys(doc)
           var n = keys.length

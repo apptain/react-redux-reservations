@@ -34,9 +34,11 @@ const Grid = React.createClass({
         <div className="ag-fresh">
           <AgGridReact
             ref="agGrid"
-            width= "700"
             rowData={this.props.rowData}
             columnDefs={this.props.columnDefs}
+						enableColResize="true"
+						enableSorting="true"
+						enableFilter="true"
             {...this.props}
           />
         </div>
