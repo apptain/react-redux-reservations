@@ -37,7 +37,7 @@ const MasterDetailsContainer = React.createClass({
           <Grid
 						rowData={this.props.docs}
 						columnDefs={this.props.columnDefs}
-            onRowSelected={this.onRowSelected(this)}
+						onRowSelected={this.onRowSelected.bind(this)}
 					/>
           :
           <div>No Data</div>
