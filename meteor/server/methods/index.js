@@ -1,5 +1,5 @@
-import reservationMethods from './reservationMethods'
+import docMethods from './docMethods'
 
 export default function() {
-  reservationMethods()
+  docMethods()
 }

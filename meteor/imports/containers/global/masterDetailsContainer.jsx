@@ -16,7 +16,7 @@ const MasterDetailsContainer = React.createClass({
   },
   componentDidMount() {
     //TODO move into actions/reducers
-    const docsSub = Meteor.subscribe(this.props.collectionName)
+    const docsSub = Meteor.subscribe('docs', this.props.collectionName)
     setTimeout(this.handleSubs(docsSub), 0)
   },
   handleSubs(docsSub) {
@@ -28,7 +28,7 @@ const MasterDetailsContainer = React.createClass({
     })
   },
   onRowSelected(e) {
-    this.props.docSelect(e.node.data._id)
+    this.props.docModalShow(e.node.data)
   },
   render() {
     return (
@@ -37,7 +37,7 @@ const MasterDetailsContainer = React.createClass({
           <Grid
 						rowData={this.props.docs}
 						columnDefs={this.props.columnDefs}
-            onRowSelected={this.onRowSelected.bind(this)}
+            onRowSelected={this.onRowSelected(this)}
 					/>
           :
           <div>No Data</div>
@@ -48,10 +48,6 @@ const MasterDetailsContainer = React.createClass({
 })
 
 var mapStateToProps = function(state) {
-  if(state.docs.doc._id) {
-    this.docModalShow(state.docs.doc)
-  }
-
   return {
     doc: state.docs.doc,
     docs: state.docs.docs,
@@ -66,13 +62,10 @@ var mapDispatchToProps = function(dispatch) {
     docsReady(docs) {
       dispatch(actions.docs.queried(docs))
     },
-		docSelect(id) {
-			debugger
-			dispatch(actions.docs.select(id))
-		},
     docModalShow(doc) {
       dispatch(actions.overlays.add(doc._id,(
-        <Modal id='content'>
+        <Modal id='content'
+          onClose={this.docModalClose}>
           <Form
             schema={this.schema}
             doc={doc}
@@ -84,6 +77,7 @@ var mapDispatchToProps = function(dispatch) {
     },
     docModalClose(e) {
       //TODO Change to key?
+      debugger
       dispatch(actions.overlays.remove(e.target.id))
     },
     docUpsert(doc) {

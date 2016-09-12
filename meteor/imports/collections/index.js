@@ -1,5 +1,5 @@
 import Reservations from './reservationsCollection'
 
-export default {
+export {
 	Reservations
 }

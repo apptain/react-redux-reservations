@@ -1,5 +1,5 @@
-import reservationPublications from './reservationPublications'
+import docPublications from './docPublications'
 
 export default function() {
-  reservationPublications()
+  docPublications()
 }

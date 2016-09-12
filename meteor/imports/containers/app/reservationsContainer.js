@@ -10,7 +10,7 @@ const ReservationsContainer = React.createClass({
       <div>
         <MasterDetailsContainer
           schema={reservationsSchema}
-          collectionName="reservations"
+          collectionName="Reservations"
 					collection={collections.Reservations}
           columnDefs={reservationColumnDefs}
         />

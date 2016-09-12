@@ -7,6 +7,7 @@ const Modal = React.createClass({
     children: PropTypes.node
   },
   close(e) {
+    debugger
     this.props.onClose(e)
   },
   render: function() {
