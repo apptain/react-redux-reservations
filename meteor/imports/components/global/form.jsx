@@ -9,7 +9,8 @@ const Form = React.createClass({
   propTypes: {
     schema: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    doc: PropTypes.object,
+    doc: PropTypes.object.isRequired,
+    collectionName: PropTypes.string.isRequired,
     formId: PropTypes.string,
     buttonText: PropTypes.string
   },
@@ -17,8 +18,10 @@ const Form = React.createClass({
     const container = this.refs.blazeContainer
     this.doc = new ReactiveVar(this.props.doc)
     // this.formResetting = new ReactiveVar(this.props.formResetting)
+    debugger
     const data = {
       schema: this.props.schema,
+      collectionName: this.props.collectionName,
       formId: this.props.formId || 'form',
       buttonText: this.props.buttonText || 'Save',
       doc: this.doc,
@@ -30,10 +33,13 @@ const Form = React.createClass({
     template.created = function () {
      AutoForm.addHooks(this.data.formId, {
         onError: function (type, error) {
+          debugger
           //TODO Add error handling logging for anything not a standard validation
         },
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
-          this.template.data.eventMap.onSubmit(insertDoc)
+          debugger
+          this.template.data.eventMap.onSubmit(
+            this.template.data.collectionName, insertDoc)
         }
       })
     }

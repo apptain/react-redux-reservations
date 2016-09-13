@@ -2,10 +2,18 @@ import * as Collections from '/imports/collections';
 
 export default function () {
   Meteor.methods({
-    'docsUpsert': function (collectionName, docs) {
+    'docsUpsert': function (parameters) {
+      const collectionName = parameters.collectionName
+      var docs = parameters.docs
+
       var upsert = function (doc) {
-    	//	return Collections[collectionName].upsert(
-					
+        if(doc._id) {
+          return Collections[collectionName].update(
+            doc._id, {$set: doc}
+          )
+        } else {
+          return Collections[collectionName].insert(doc)
+        }
       }
       if (Array.isArray(docs)) {
         docs.forEach(function(doc) {

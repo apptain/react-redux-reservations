@@ -5,7 +5,7 @@
 
 import { CALL_API } from 'redux-api-middleware'
 import actionTypes from '../../actionTypes/global'
-import settings from '../../settings' 
+import settings from '../../settings'
 
 export function queried(docs) {
   return {
@@ -14,16 +14,13 @@ export function queried(docs) {
   }
 }
 
-export function upsert(doc) {
+export function upsert(collectionName, doc) {
 	debugger
   return {
     [CALL_API]: {
       method: 'post',
-      endpoint: settings.apiUrl + '/methods/docUpsert',
-      body: JSON.stringify({
-				collectionName: 'Reservations',
-				doc
-			}),
+      endpoint: settings.apiUrl + '/methods/docsUpsert',
+      body: JSON.stringify({collectionName, docs: doc}),
       headers: { 'Content-Type': 'application/json' },
       types: [
         actionTypes.docs.upsert.request,

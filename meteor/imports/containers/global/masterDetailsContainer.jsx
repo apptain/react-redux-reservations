@@ -69,6 +69,7 @@ var mapDispatchToProps = function(dispatch) {
           <Form
             schema={this.schema}
             doc={doc}
+            collectionName={this.collectionName}
             onSubmit={this.docUpsert}
            	formId={doc._id || 'new' + this.collectionName}
           />
@@ -78,8 +79,9 @@ var mapDispatchToProps = function(dispatch) {
     docModalClose(id) {
       dispatch(actions.overlays.remove(id))
     },
-    docUpsert(doc) {
-      dispatch(actions.docs.upsert(doc))
+    docUpsert(collectionName, doc) {
+      debugger
+      dispatch(actions.docs.upsert(collectionName, doc))
     },
     //Would be a good place for any entire dataset searches
   }
