@@ -6,7 +6,7 @@ import OverlaysContainer from  './containers/global/overlaysContainer'
 const App = React.createClass({
   render() {
     return (
-      <div className="app">
+      <div className="container">
         <OverlaysContainer />
         <div className="content">
           { this.props.children }

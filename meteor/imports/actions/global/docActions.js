@@ -15,7 +15,6 @@ export function queried(docs) {
 }
 
 export function upsert(collectionName, doc) {
-	debugger
   return {
     [CALL_API]: {
       method: 'post',

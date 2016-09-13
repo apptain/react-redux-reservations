@@ -27,10 +27,7 @@ const ReservationSchema = new SimpleSchema({
   },
   status: {
     type: String,
-    allowedValues: ['active', 'fulfilled', 'canceled'],
-    autoform: {
-      type: 'hidden'
-    }
+    allowedValues: ['active', 'fulfilled', 'canceled']
   },
   dateCreated: {
     type: Date,
@@ -40,6 +37,5 @@ const ReservationSchema = new SimpleSchema({
     }
   }
 })
-
 
 export default ReservationSchema

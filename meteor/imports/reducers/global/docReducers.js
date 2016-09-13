@@ -16,12 +16,10 @@ export default (state = initialState, action) => {
         docs: action.docs
       })
     case actionTypes.docs.select.request:
-			debugger
       return Object.assign({}, state, {
         docSelectPending: true
       })
     case actionTypes.docs.select.success:
-			debugger
       return Object.assign({}, state, {
         docSelectPending: false,
         doc: action.payload,
@@ -44,12 +42,10 @@ export default (state = initialState, action) => {
         docsUpsertPending: false
       })
     case actionTypes.docs.upsert.request:
-			debugger
       return Object.assign({}, state, {
         docsUpsertPending: true
       })
     case actionTypes.docs.upsert.success:
-			debugger
       return Object.assign({}, state, {
         docsUpsertPending: false,
         doc: action.payload

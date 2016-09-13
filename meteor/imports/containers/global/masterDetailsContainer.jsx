@@ -28,11 +28,20 @@ const MasterDetailsContainer = React.createClass({
     })
   },
   onRowSelected(e) {
-    this.props.docModalShow(e.node.data)
+    this.docModalShow(e.node.data)
+  },
+  docModalShow(doc) {
+    //TODO clean this up, don't use params as vars
+    if(!doc){
+      doc = {}
+    }
+    this.props.docModalShow(doc)
   },
   render() {
     return (
-      <div className="grid">
+      <div className="master-details">
+        <a className="new-entry-link"
+           onClick={this.docModalShow.bind(this)}>Create New Entry</a>
         { this.props.docs ?
           <Grid
 						rowData={this.props.docs}
@@ -63,15 +72,15 @@ var mapDispatchToProps = function(dispatch) {
       dispatch(actions.docs.queried(docs))
     },
     docModalShow(doc) {
-      dispatch(actions.overlays.add(doc._id,(
-        <Modal id={doc._id || 'new' + this.collectionName}
-          onClose={this.docModalClose}>
+      let id = doc._id || 'new' + this.collectionName
+      dispatch(actions.overlays.add(id,(
+        <Modal id={id} onClose={this.docModalClose}>
           <Form
             schema={this.schema}
             doc={doc}
             collectionName={this.collectionName}
             onSubmit={this.docUpsert}
-           	formId={doc._id || 'new' + this.collectionName}
+            formId={id}
           />
         </Modal>
       )))
@@ -80,8 +89,9 @@ var mapDispatchToProps = function(dispatch) {
       dispatch(actions.overlays.remove(id))
     },
     docUpsert(collectionName, doc) {
-      debugger
       dispatch(actions.docs.upsert(collectionName, doc))
+      //TODO Make this synchronous after upsert
+      this.docModalClose(doc._id || 'new' + this.collectionName)
     },
     //Would be a good place for any entire dataset searches
   }

@@ -1,19 +1,26 @@
-React Redux Exmple
+React Redux Master Details View
 -------------------------------
-
 **Requires**
 meteor
 
 **Use**
 cd meteor
 npm i
-
-test - npm run test
-app (needs work still) - npm start
+npm start
 
 **To do**
-Start and finish red/greening reducer tests
-Get meteor subscriptions working in container for now, but move to actions/reducers shortly
-Use multi-action-api-middleware temporarily with queried action, will use in future for rollbar logging
-
-Create Explanation Screencasts
+Fix Url Change on Form Submit
+Get DateTime Picker Binding - Improve Look
+Clean Client Side React Bind and Sync Error Messages
+Add Tests
+Improve Look
+DateTime Format for Grid
+Get Animations Working
+Show Loading Animation on Subscription and REST API Waits
+Fix Grid Column Sizing
+Script Out Object Addition
+Move meteor subscriptions to actions/reducers
+Add Toastr Notifications
+Use multi-action-api-middleware for notifications
+Add rollbar logging
+Add server side rendering

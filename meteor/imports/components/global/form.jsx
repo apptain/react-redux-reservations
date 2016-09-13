@@ -18,7 +18,6 @@ const Form = React.createClass({
     const container = this.refs.blazeContainer
     this.doc = new ReactiveVar(this.props.doc)
     // this.formResetting = new ReactiveVar(this.props.formResetting)
-    debugger
     const data = {
       schema: this.props.schema,
       collectionName: this.props.collectionName,
@@ -33,11 +32,9 @@ const Form = React.createClass({
     template.created = function () {
      AutoForm.addHooks(this.data.formId, {
         onError: function (type, error) {
-          debugger
           //TODO Add error handling logging for anything not a standard validation
         },
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
-          debugger
           this.template.data.eventMap.onSubmit(
             this.template.data.collectionName, insertDoc)
         }
