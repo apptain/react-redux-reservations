@@ -11,6 +11,7 @@ export function add(id, component, blur = true, route = null) {
 }
 
 export function remove(id) {
+debugger
   return {
     type: actionTypes.overlays.remove,
     id

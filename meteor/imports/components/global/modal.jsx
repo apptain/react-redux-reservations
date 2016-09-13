@@ -8,7 +8,6 @@ const Modal = React.createClass({
     children: PropTypes.node.isRequired
   },
   close(e) {
-    debugger
     this.props.onClose(this.props.id)
   },
   render: function() {
